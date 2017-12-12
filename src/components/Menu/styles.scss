@@ -1,0 +1,27 @@
+.logoWrapper {
+  position: fixed;
+  width: 260px;
+  height: 77px;
+  background-color: #00b1ef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFF;
+  font-family: 'Myriad Pro';
+  font-size: 35px;
+  z-index: 10;
+
+  img {
+    margin-left: 10px;
+  }
+}
+
+.menu {
+  position: fixed;
+  width: 260px;
+  top: 77px;
+  bottom: 0;
+  overflow-y: auto;
+  background: #3c4b5d;
+  padding-top: 14px;
+}

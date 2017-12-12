@@ -1,17 +1,20 @@
 // Core
-import React, { Component } from 'react';
+import React from 'react';
 
 // Instruments
 import Catcher from '../../components/Catcher';
+import Menu from '../../components/Menu';
+import Workspace from '../../components/Workspace';
 
-export default class App extends Component {
-    render () {
-        return (
-            <section>
-                <Catcher>
-                    <p>adminbox-admin</p>
-                </Catcher>
-            </section>
-        );
-    }
-}
+const App = () => (
+    <section>
+        <Catcher>
+            <div>
+                <Menu />
+                <Workspace />
+            </div>
+        </Catcher>
+    </section>
+);
+
+export default App;
