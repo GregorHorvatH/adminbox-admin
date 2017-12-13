@@ -3,14 +3,9 @@ import React from 'react';
 
 import MenuItem from '../MenuItem';
 import Styles from './styles.scss';
-import logo from '../../theme/assets/logo.png';
 
 const Menu = () => (
     <section>
-        <div className = { Styles.logoWrapper }>
-            Admin<b>Box</b>
-            <img src = { logo } />
-        </div>
         <div className = { Styles.menu }>
             <MenuItem selected icon = 'ios-speedometer-outline' label = 'Dashboard' />
             <MenuItem icon = 'ios-albums-outline' label = 'Layouts' />

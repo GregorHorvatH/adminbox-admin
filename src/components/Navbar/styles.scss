@@ -1,0 +1,83 @@
+body {
+  background-color: #f5f8f9;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 77px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid #d8e3e7;
+
+  .logoWrapper {
+    position: fixed;
+    width: 260px;
+    height: 77px;
+    background-color: #00b1ef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    font-size: 35px;
+    z-index: 10;
+
+    img {
+      margin-left: 10px;
+    }
+  }
+
+  .headerWrapper {
+    margin-left: 260px;
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+
+    .icons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 165px;
+      margin-left: 30px;
+
+      .icon {
+        cursor: pointer;
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+
+      .search {
+        cursor: text;
+      }
+
+      .userWrapper {
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        cursor: pointer;
+
+        .avatar {
+          margin-right: 8px;
+        }
+
+        .userName {
+          font-family: 'Poppins', sans-serif;
+          color: #768387;
+          padding-right: 5px;
+        }
+      }
+
+      .progress {
+        margin-right: 30px;
+        cursor: pointer;
+      }
+    }
+  }
+}

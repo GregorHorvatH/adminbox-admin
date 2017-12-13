@@ -1,0 +1,66 @@
+.toDoList {
+  background-color: #fff;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  color: #424b4d;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    padding: 0 25px;
+    border-bottom: 1px solid #d8e3e7;
+
+    .right {
+      display: flex;
+      align-items: center;
+
+      .searchWrapper {
+        display: flex;
+        align-items: center;
+        border-radius: 35px;
+        background-color: #f5f8f9;
+        padding: 5px 10px 5px 15px;
+
+        .searchInput {
+          border: none;
+          background: none;
+          box-shadow: none;
+          outline: none;
+          color: #424b4d;
+
+          &::-webkit-input-placeholder {
+            color: #aebcc0;
+          }
+        }
+      }
+
+      .icon {
+        margin-left: 5px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    padding: 0 25px;
+    border-top: 1px solid #d8e3e7;
+
+    .selectAll {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}

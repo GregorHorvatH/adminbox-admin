@@ -4,6 +4,7 @@ import React from 'react';
 // Instruments
 import Catcher from '../../components/Catcher';
 import Menu from '../../components/Menu';
+import Navbar from '../../components/Navbar';
 import Workspace from '../../components/Workspace';
 
 const App = () => (
@@ -11,6 +12,7 @@ const App = () => (
         <Catcher>
             <div>
                 <Menu />
+                <Navbar />
                 <Workspace />
             </div>
         </Catcher>

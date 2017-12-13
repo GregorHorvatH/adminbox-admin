@@ -2,10 +2,17 @@
 import React from 'react';
 
 import Styles from './styles.scss';
+import ToDoList from '../ToDoList';
 
 const Workspace = () => (
     <section className = { Styles.workspace }>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam architecto dolor doloremque eaque eum facilis fuga hic, iure nihil odio provident ullam. Alias culpa cum odit placeat velit voluptatibus.</p>
+        <div className = { Styles.header } >
+            <span className = { Styles.left } >Dashboard</span>
+            <span className = { Styles.right } >Home / Dashboard</span>
+        </div>
+        <div className = { Styles.widgets }>
+            <ToDoList />
+        </div>
     </section>
 );
 

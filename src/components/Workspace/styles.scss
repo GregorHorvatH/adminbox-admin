@@ -1,4 +1,30 @@
 .workspace {
+  margin-top: 77px;
   margin-left: 260px;
-  border: 1px solid red;
+  color: #424b4d;
+
+  .header {
+    height: 75px;
+    background-color: #fff;
+    border-bottom: 1px solid #d8e3e7;
+    padding: 0 30px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .right {
+      color: #768387;
+      font-size: 12px;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .widgets {
+    padding: 30px;
+  }
 }
