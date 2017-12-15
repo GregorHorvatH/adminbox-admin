@@ -3,18 +3,12 @@ import React from 'react';
 
 // Instruments
 import Catcher from '../../components/Catcher';
-import Menu from '../../components/Menu';
-import Navbar from '../../components/Navbar';
-import Workspace from '../../components/Workspace';
+import AdminBox from '../../components/AdminBox';
 
 const App = () => (
     <section>
         <Catcher>
-            <div>
-                <Menu />
-                <Navbar />
-                <Workspace />
-            </div>
+            <AdminBox />
         </Catcher>
     </section>
 );

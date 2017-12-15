@@ -10,7 +10,7 @@ const CheckBox = ({ isChecked }) => (
             Styles.checkBox,
             isChecked
                 ? Styles.checked
-                : {}
+                : null
         ].join(' ') }>
         {
             isChecked

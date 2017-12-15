@@ -1,0 +1,25 @@
+.toDoItem {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f8f9;
+    padding: 20px;
+    margin-bottom: 5px;
+    cursor: default;
+
+    .left {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .right {
+        display: flex;
+        flex-direction: row;
+        align-self: flex-start;
+        
+        .icon {
+            margin-left: 3px;
+        }
+    }
+}

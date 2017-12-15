@@ -4,9 +4,23 @@ import Ionicon from 'react-ionicons';
 
 import CheckBox from '../CheckBox';
 import Styles from './styles.scss';
+import ToDoItem from '../ToDoItem';
 
 class ToDoList extends Component {
     state = {
+        toDoList: [
+            {
+                id:       'dgdsggf',
+                text:     'to do item 1',
+                selected: true
+            },
+            {
+                id:       'dgdsg44gf',
+                text:     'to do item 2',
+                selected: false
+            }
+        ],
+        text:          '',
         searchInFocus: false,
         inputInFocus:  false,
         selectAll:     false
@@ -42,7 +56,35 @@ class ToDoList extends Component {
         });
     };
 
+    _handleAddItemPress = () => {
+        this.setState({
+            toDoList: [
+                {
+                    id:       'dgdsggf',
+                    text:     this.state.text,
+                    selected: false    
+                },
+                ...toDoList
+            ],
+            text: ''
+        });
+    }
+
+    _handleItemSelectPress = (id) => {
+        this.setState({
+            toDoList: this.state.toDoList.map((item) => item.id === id
+                ? {
+                    ...item,
+                    selected: !item.selected
+                }
+                : item
+            )
+        });
+    }
+
     render () {
+        const { toDoList } = this.state;
+
         return (
             <section className = { Styles.toDoList }>
                 <div className = { Styles.header }>
@@ -54,8 +96,8 @@ class ToDoList extends Component {
                             Styles.right,
                             this.state.searchInFocus
                                 ? Styles.focused
-                                : {}].join(' ')
-                        }>
+                                : null
+                        ].join(' ') }>
                         <div className = { Styles.searchWrapper }>
                             <input
                                 className = { Styles.searchInput }
@@ -72,7 +114,15 @@ class ToDoList extends Component {
                     </div>
                 </div>
                 <div className = { Styles.body }>
-                    <span>To Do List</span>
+                    {
+                        toDoList.map((item) => (
+                            <ToDoItem
+                                { ...item }
+                                key = { item.id }
+                                onSelectPress = { this._handleItemSelectPress }
+                            />
+                        ))
+                    }
                 </div>
                 <div className = { Styles.footer }>
                     <div className = { Styles.selectAll } onClick = { this._handleSelectAllClick } >
@@ -84,7 +134,7 @@ class ToDoList extends Component {
                             Styles.right,
                             this.state.inputInFocus
                                 ? Styles.focused
-                                : {}
+                                : null
                         ].join(' ') }>
                         <div className = { Styles.searchWrapper }>
                             <input
