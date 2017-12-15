@@ -19,15 +19,23 @@
     .right {
       display: flex;
       align-items: center;
+      margin-left: 10px;
+      transition: ease 0.5s;
+
+      &.focused {
+        flex: 1;
+      }
 
       .searchWrapper {
         display: flex;
+        flex: 1;
         align-items: center;
         border-radius: 35px;
         background-color: #f5f8f9;
         padding: 5px 10px 5px 15px;
 
         .searchInput {
+          flex: 1;
           border: none;
           background: none;
           box-shadow: none;
@@ -37,6 +45,10 @@
           &::-webkit-input-placeholder {
             color: #aebcc0;
           }
+        }
+
+        .searchIcon {
+          cursor: pointer;
         }
       }
 
@@ -61,6 +73,71 @@
       display: flex;
       flex-direction: row;
       align-items: center;
+      cursor: default;
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      margin-left: 10px;
+      transition: ease 0.5s;
+
+      &.focused {
+        flex: 1;
+      }
+
+      .searchWrapper {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        border-radius: 35px;
+        background-color: #f5f8f9;
+        padding: 10px 10px 10px 15px;
+
+        .searchInput {
+          flex: 1;
+          border: none;
+          background: none;
+          box-shadow: none;
+          outline: none;
+          color: #424b4d;
+
+          &::-webkit-input-placeholder {
+            color: #aebcc0;
+          }
+        }
+
+        .searchIcon {
+          cursor: pointer;
+        }
+      }
+
+      .icon {
+        margin-left: 5px;
+        cursor: pointer;
+      }
+    }
+
+    .addButton {
+      border-radius: 20px;
+      background-color: #1398ff;
+      color: #fff;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-left: 15px;
+      min-width: 110px;
+      text-align: center;
+      outline: none;
+      border: none;
+      font-size: 14px;
+
+      &:hover {
+        background-color: #1183DE;
+      }
+
+      &:active {
+        background-color: #1177ce;
+      }
     }
   }
 }
