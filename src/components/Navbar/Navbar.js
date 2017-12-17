@@ -33,7 +33,10 @@ class Navbar extends Component {
             <div>
                 {
                     showPopUp
-                        ? <PopUp message = 'coming soon...' onButtonPress = { this._handleNoFunctionPress } />
+                        ? <PopUp
+                            message = 'coming soon...'
+                            onButtonPress = { this._handleNoFunctionPress }
+                        />
                         : null
                 }
 
@@ -44,18 +47,38 @@ class Navbar extends Component {
                     </div>
                     <div className = { Styles.headerWrapper } >
                         <div className = { Styles.icons } >
-                            <img className = { Styles.icon } src = { icoNotifications } onClick = { this._handleNoFunctionPress } />
-                            <img className = { Styles.icon } src = { icoMail } onClick = { this._handleNoFunctionPress } />
-                            <img className = { Styles.icon } src = { icoStar } onClick = { this._handleNoFunctionPress } />
+                            <img
+                                className = { Styles.icon }
+                                src = { icoNotifications }
+                                onClick = { this._handleNoFunctionPress }
+                            />
+                            <img
+                                className = { Styles.icon }
+                                src = { icoMail }
+                                onClick = { this._handleNoFunctionPress }
+                            />
+                            <img
+                                className = { Styles.icon }
+                                src = { icoStar }
+                                onClick = { this._handleNoFunctionPress }
+                            />
                         </div>
                         <div className = { Styles.right }>
-                            <img className = { Styles.search } src = { mockSearch } onClick = { this._handleNoFunctionPress } />
+                            <img
+                                className = { Styles.mockSearch }
+                                src = { mockSearch }
+                                onClick = { this._handleNoFunctionPress }
+                            />
                             <div className = { Styles.userWrapper } onClick = { this._handleNoFunctionPress } >
                                 <img className = { Styles.avatar } src = { avatar1 } />
                                 <span className = { Styles.userName } >Gregory Horvath</span>
                                 <Ionicon color = '#768387' icon = 'ios-arrow-down' />
                             </div>
-                            <img className = { Styles.progress } src = { icoProgress } onClick = { this._handleNoFunctionPress } />
+                            <img
+                                className = { Styles.progress }
+                                src = { icoProgress }
+                                onClick = { this._handleNoFunctionPress }
+                            />
                         </div>
                     </div>
                 </section>

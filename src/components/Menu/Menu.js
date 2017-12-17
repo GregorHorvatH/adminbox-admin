@@ -1,5 +1,6 @@
 // Core
 import React, { Component } from 'react';
+import { array } from 'prop-types';
 
 // Instruments
 import MenuItem from '../MenuItem';
@@ -7,62 +8,16 @@ import Styles from './styles.scss';
 
 class Menu extends Component {
 
+    static propTypes = {
+        items: array.isRequired
+    };
+
     state = {
-        items: [
-            {
-                icon:   'fa fa-tachometer',
-                screen: 'Dashboard'
-            },
-            {
-                icon:   'fa fa-pencil',
-                screen: 'Layouts'
-            },
-            {
-                icon:   'fa fa-calendar',
-                screen: 'Calendar'
-            },
-            {
-                icon:   'fa fa-bookmark-o',
-                screen: 'UI Elements'
-            },
-            {
-                icon:   'fa fa-comments-o',
-                screen: 'Text & Forms'
-            },
-            {
-                icon:   'fa fa-envelope-o',
-                screen: 'Email'
-            },
-            {
-                icon:   'fa fa-plug',
-                screen: 'Icon Set'
-            },
-            {
-                icon:   'fa fa-table',
-                screen: 'Data Tables'
-            },
-            {
-                icon:   'fa fa-bar-chart',
-                screen: 'Charts'
-            },
-            {
-                icon:   'fa fa-map-o',
-                screen: 'Maps'
-            },
-            {
-                icon:   'fa fa-user-o',
-                screen: 'Profile'
-            },
-            {
-                icon:   'fa fa-unlock-alt',
-                screen: 'Login Page'
-            }
-        ],
         selected: undefined
     }
 
     componentWillMount () {
-        const { items } = this.state;
+        const { items } = this.props;
 
         if (items.length) {
             this.setState({
@@ -78,10 +33,11 @@ class Menu extends Component {
     }
 
     render () {
-        const { items, selected } = this.state;
+        const { items } = this.props;
+        const { selected } = this.state;
 
         return (
-            <div className = { Styles.menu }>
+            <section className = { Styles.menu }>
                 {
                     items.map((item) => (
                         <MenuItem
@@ -93,7 +49,7 @@ class Menu extends Component {
                         />
                     ))
                 }
-            </div>
+            </section>
         );
     }
 }

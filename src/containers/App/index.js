@@ -9,7 +9,7 @@ import Dashboard from '../../components/Dashboard';
 import Page404 from '../../components/Page404';
 
 const App = () => (
-    <section>
+    <section className = 'app'>
         <Catcher>
             <Router history = { hashHistory }>
                 <Route component = { AdminBox } path = '/'>

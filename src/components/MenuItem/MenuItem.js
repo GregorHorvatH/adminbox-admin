@@ -47,7 +47,6 @@ MenuItem.propTypes = {
     icon:            string.isRequired,
     screen:          string.isRequired,
     onMenuItemPress: func.isRequired,
-    isMouseOver:     func,
     selected:        bool
 };
 
