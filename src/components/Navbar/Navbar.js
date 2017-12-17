@@ -17,7 +17,7 @@ import icoProgress from '../../theme/assets/ico_progress.png';
 const Navbar = () => (
     <section className = { Styles.navbar }>
         <div className = { Styles.logoWrapper }>
-            Admin<b>Box</b>
+            <span>Admin<b>Box</b></span>
             <img src = { logo } />
         </div>
         <div className = { Styles.headerWrapper } >

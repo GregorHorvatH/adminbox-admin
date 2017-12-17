@@ -55,12 +55,21 @@
       .icon {
         margin-left: 5px;
         cursor: pointer;
+        color: #aebcc0;
+
+        &:hover {
+          color: #888888;
+        }
       }
     }
   }
 
   .body {
     padding: 25px;
+
+    .noTasks {
+      color: #aebcc0;
+    }
   }
 
   .footer {
@@ -144,4 +153,5 @@
       }
     }
   }
+
 }

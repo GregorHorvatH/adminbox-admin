@@ -4,6 +4,10 @@
   display: flex;
   align-items: center;
 
+  a {
+    text-decoration: none;
+  }
+
   .label {
     padding-left: 5px;
   }

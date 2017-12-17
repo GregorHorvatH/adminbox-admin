@@ -2,7 +2,9 @@
 import React, { Component } from 'react';
 import { bool, func, string } from 'prop-types';
 import Ionicon from 'react-ionicons';
+import { Link } from 'react-router';
 
+// Instruments
 import Styles from './styles.scss';
 
 class MenuItem extends Component {
@@ -51,7 +53,7 @@ class MenuItem extends Component {
     };
 
     render () {
-        const { icon, label, selected } = this.props;
+        const { icon, screen, selected } = this.props;
         const { color } = this.state;
 
         return (
@@ -59,11 +61,17 @@ class MenuItem extends Component {
                 className = { Styles.menuItem }
                 onMouseLeave = { this._handleMouseLeave }
                 onMouseOver = { this._handleMouseOver } >
-                <Ionicon color = { color } icon = { icon } />
-                <span className = { Styles.label } style = { { color } }>{label}</span>
-                {
-                    selected ? <div className = { Styles.hover } /> : null
-                }
+                <Link to = { screen }>
+                    <Ionicon color = { color } icon = { icon } />
+                    <span className = { Styles.label } style = { { color } }>
+                        { screen }
+                    </span>
+                    {
+                        selected
+                            ? <div className = { Styles.hover } />
+                            : null
+                    }
+                </Link>
             </div>
         );
     }
@@ -71,7 +79,7 @@ class MenuItem extends Component {
 
 MenuItem.propTypes = {
     icon:        string.isRequired,
-    label:       string.isRequired,
+    screen:      string.isRequired,
     isMouseOver: func,
     selected:    bool
 };

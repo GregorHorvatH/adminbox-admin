@@ -1,7 +1,9 @@
+// Core
 import React from 'react';
 import { bool } from 'prop-types';
 import Ionicon from 'react-ionicons';
 
+// Instruments
 import Styles from './styles.scss';
 
 const CheckBox = ({ isChecked }) => (
