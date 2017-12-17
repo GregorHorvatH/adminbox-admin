@@ -241,7 +241,7 @@ class ToDoList extends Component {
             <section className = { Styles.toDoList }>
                 {
                     showPopUp
-                        ? <PopUp message = 'soon' onButtonPress = { this._handleNoFunctionPress } />
+                        ? <PopUp message = 'coming soon...' onButtonPress = { this._handleNoFunctionPress } />
                         : null
                 }
 

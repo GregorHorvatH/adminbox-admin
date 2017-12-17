@@ -14,24 +14,47 @@
 
     .right {
       display: flex;
-      flex-direction: column;        
+      flex-direction: column;
+      align-items: flex-start;      
 
       .header1 {
         color: #00b1ef;
+        font-size: 80pt;
       }
   
       .header2 {
         color: #313b3d;
+        font-size: 20pt;
       }
   
       .text {
         color: #c6c7c7;
+        font-size: 12pt;
+        padding-top: 5px;
       }
   
       .button {
-        width: 150px;
+        margin-top: 50px;
+        border-radius: 20px;
         background-color: #00b1ef;
         color: #fff;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-left: 15px;
+        min-width: 110px;
+        text-align: center;
+        outline: none;
+        border: none;
+        font-size: 14px;
+        text-decoration: none;
+  
+        &:hover {
+          background-color: #1183DE;
+        }
+  
+        &:active {
+          background-color: #1177ce;
+        }  
       }
     }
 

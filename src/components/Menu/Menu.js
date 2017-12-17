@@ -1,25 +1,101 @@
 // Core
-import React from 'react';
+import React, { Component } from 'react';
 
 // Instruments
 import MenuItem from '../MenuItem';
 import Styles from './styles.scss';
 
-const Menu = () => (
-    <div className = { Styles.menu }>
-        <MenuItem selected icon = 'ios-speedometer-outline' screen = 'Dashboard' />
-        <MenuItem icon = 'ios-albums-outline' screen = 'Layouts' />
-        <MenuItem icon = 'ios-calendar-outline' screen = 'Calendar' />
-        <MenuItem icon = 'ios-bookmarks-outline' screen = 'UI Elements' />
-        <MenuItem icon = 'ios-text-outline' screen = 'Text & Forms' />
-        <MenuItem icon = 'ios-mail-outline' screen = 'Email' />
-        <MenuItem icon = 'ios-apps-outline' screen = 'Icon Set' />
-        <MenuItem icon = 'ios-browsers-outline' screen = 'Data Tables' />
-        <MenuItem icon = 'md-paper' screen = 'Charts' />
-        <MenuItem icon = 'ios-map-outline' screen = 'Maps' />
-        <MenuItem icon = 'ios-person-outline' screen = 'Profile' />
-        <MenuItem icon = 'ios-lock-outline' screen = 'Login Page' />
-    </div>
-);
+class Menu extends Component {
+
+    state = {
+        items: [
+            {
+                icon:   'fa fa-tachometer',
+                screen: 'Dashboard'
+            },
+            {
+                icon:   'fa fa-pencil',
+                screen: 'Layouts'
+            },
+            {
+                icon:   'fa fa-calendar',
+                screen: 'Calendar'
+            },
+            {
+                icon:   'fa fa-bookmark-o',
+                screen: 'UI Elements'
+            },
+            {
+                icon:   'fa fa-comments-o',
+                screen: 'Text & Forms'
+            },
+            {
+                icon:   'fa fa-envelope-o',
+                screen: 'Email'
+            },
+            {
+                icon:   'fa fa-plug',
+                screen: 'Icon Set'
+            },
+            {
+                icon:   'fa fa-table',
+                screen: 'Data Tables'
+            },
+            {
+                icon:   'fa fa-bar-chart',
+                screen: 'Charts'
+            },
+            {
+                icon:   'fa fa-map-o',
+                screen: 'Maps'
+            },
+            {
+                icon:   'fa fa-user-o',
+                screen: 'Profile'
+            },
+            {
+                icon:   'fa fa-unlock-alt',
+                screen: 'Login Page'
+            }
+        ],
+        selected: undefined
+    }
+
+    componentWillMount () {
+        const { items } = this.state;
+
+        if (items.length) {
+            this.setState({
+                selected: items[0].screen
+            });
+        }
+    }
+
+    _handleMenuItemPress = (screen) => {
+        this.setState({
+            selected: screen
+        });
+    }
+
+    render () {
+        const { items, selected } = this.state;
+
+        return (
+            <div className = { Styles.menu }>
+                {
+                    items.map((item) => (
+                        <MenuItem
+                            icon = { item.icon }
+                            key = { item.screen }
+                            screen = { item.screen }
+                            selected = { item.screen === selected }
+                            onMenuItemPress = { this._handleMenuItemPress }
+                        />
+                    ))
+                }
+            </div>
+        );
+    }
+}
 
 export default Menu;

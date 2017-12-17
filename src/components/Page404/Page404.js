@@ -1,5 +1,6 @@
 // Core
 import React from 'react';
+import { Link } from 'react-router';
 
 // Instruments
 import Styles from './styles.scss';
@@ -13,8 +14,8 @@ const Page404 = () => (
         <div className = { Styles.right }>
             <span className = { Styles.header1 }>404</span>
             <span className = { Styles.header2 }>Page not found</span>
-            <span className = { Styles.text }>We cant seem to find the page you're looking for.</span>
-            <button className = { Styles.button } >Back to dashboard</button>
+            <span className = { Styles.text }>We cant seem to find the page you&apos;re looking for.</span>
+            <Link className = { Styles.button } to = 'Dashboard'>Back to dashboard</Link>
         </div>
     </section>
 );
