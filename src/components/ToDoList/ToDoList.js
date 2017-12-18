@@ -4,46 +4,10 @@ import Ionicon from 'react-ionicons';
 
 // Instruments
 import Styles from './styles.scss';
-import { getUniqueID } from '../../helpers';
+import { getUniqueID, SORT } from '../../helpers';
 import CheckBox from '../CheckBox';
 import ToDoItem from '../ToDoItem';
 import PopUp from '../PopUp';
-
-const SORT = [
-    {
-        name: 'none',
-        icon: 'fa fa-sort',
-        func: () => 0
-    },
-    {
-        name: 'asc',
-        icon: 'fa fa-chevron-down',
-        func: (a, b) => {
-            if (a.text < b.text) {
-                return -1;
-            }
-            if (a.text > b.text) {
-                return 1;
-            }
-
-            return 0;
-        }
-    },
-    {
-        name: 'desc',
-        icon: 'fa fa-chevron-up',
-        func: (a, b) => {
-            if (a.text > b.text) {
-                return -1;
-            }
-            if (a.text < b.text) {
-                return 1;
-            }
-
-            return 0;
-        }
-    }
-];
 
 class ToDoList extends Component {
     state = {
@@ -56,16 +20,6 @@ class ToDoList extends Component {
         sort:          0,
         showPopUp:     false
     };
-
-    componentWillMount () {
-        this.setState({
-            toDoList: [
-                { 'id': '5ak0VgS277sLCIC', 'text': 'task 1', 'selected': false, 'isLiked': true },
-                { 'id': 'jM0GTuEBB2NXYrE', 'text': 'task 2', 'selected': true, 'isLiked': false },
-                { 'id': 't4IrIYFfXn1Dh2g', 'text': 'task 3', 'selected': false, 'isLiked': false }
-            ]
-        });
-    }
 
     _handleSearchFocus = () => {
         this.setState({
@@ -107,20 +61,6 @@ class ToDoList extends Component {
         });
     }
 
-    _handleSelectAllClick = () => {
-        if (!this.state.toDoList.length) {
-            return;
-        }
-
-        this.setState(({ selectAll, toDoList }) => ({
-            selectAll: !selectAll,
-            toDoList:  toDoList.map((item) => ({
-                ...item,
-                selected: !selectAll
-            }))
-        }));
-    };
-
     _handleAddItemPress = (event) => {
         event.preventDefault();
         if (!this.state.text) {
@@ -140,6 +80,30 @@ class ToDoList extends Component {
             text:      '',
             selectAll: false
         }));
+    }
+
+    _handleSelectAllClick = () => {
+        if (!this.state.toDoList.length) {
+            return;
+        }
+
+        this.setState(({ selectAll, toDoList }) => ({
+            selectAll: !selectAll,
+            toDoList:  toDoList.map((item) => ({
+                ...item,
+                selected: !selectAll
+            }))
+        }));
+    };
+
+    _handleItemDeletePress = (id) => {
+        const { toDoList, selectAll } = this.state;
+        const filteredToDoList = toDoList.filter((item) => item.id !== id);
+
+        this.setState({
+            toDoList:  filteredToDoList,
+            selectAll: filteredToDoList.length ? selectAll : false
+        });
     }
 
     _handleItemSelectPress = (id) => {
@@ -180,14 +144,10 @@ class ToDoList extends Component {
         }));
     }
 
-    _handleItemDeletePress = (id) => {
-        const { toDoList, selectAll } = this.state;
-        const filteredToDoList = toDoList.filter((item) => item.id !== id);
-
-        this.setState({
-            toDoList:  filteredToDoList,
-            selectAll: filteredToDoList.length ? selectAll : false
-        });
+    _handleNoFunctionPress = () => {
+        this.setState(({ showPopUp }) => ({
+            showPopUp: !showPopUp
+        }));
     }
 
     _handleSortPress = () => {
@@ -196,20 +156,15 @@ class ToDoList extends Component {
         }));
     }
 
-    _handleNoFunctionPress = () => {
-        this.setState(({ showPopUp }) => ({
-            showPopUp: !showPopUp
-        }));
-    }
-
     _renderToDoItems = () => {
         const { toDoList, filter, sort } = this.state;
 
         return (
             toDoList
-                .filter((item) => filter
-                    ? item.text.indexOf(filter) > -1
-                    : true
+                .filter((item) =>
+                    filter
+                        ? item.text.indexOf(filter) > -1
+                        : true
                 )
                 .sort(SORT[sort].func)
                 .map((item) => (

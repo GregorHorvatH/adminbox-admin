@@ -12,42 +12,9 @@ class ToDoItem extends Component {
         newText:    this.props.text
     }
 
-    _handleSelectPress = () => {
-        const { isEditMode } = this.state;
-        const { id, onSelectPress } = this.props;
-
-        if (isEditMode) {
-            return;
-        }
-
-        onSelectPress(id);
-    };
-
-    _handleEnterPress = (event) => {
-        const enterKey = event.key === 'Enter';
-
-        if (enterKey) {
-            event.preventDefault();
-            this._handleSavePress();
-        }
-    }
-
-    _handleSavePress = () => {
-        const { id, onSavePress, text } = this.props;
-        const { newText } = this.state;
-
-        onSavePress(id, newText ? newText : text);
-        this.setState({
-            isEditMode: false
-        });
-    }
-
-    _handleLikePress = () => {
-        const { id, onLikePress } = this.props;
-
-        onLikePress(id);
-    };
-
+    /**
+     * Включает режим редактирования
+     */
     _handleEditPress = () => {
         const { text } = this.props;
 
@@ -65,18 +32,75 @@ class ToDoItem extends Component {
         });
     };
 
-    _handleDeletePress = () => {
-        const { id, onDeletePress } = this.props;
+    /**
+     * Помечает таску галочкой
+     */
+    _handleSelectPress = () => {
+        const { isEditMode } = this.state;
+        const { id, onSelectPress } = this.props;
 
-        onDeletePress(id);
+        if (isEditMode) {
+            return;
+        }
+
+        onSelectPress(id);
     };
 
+    /**
+     * Обработчик изменений в поле ввода
+     */
     _handleInputChange = (event) => {
         this.setState({
             newText: event.target.value
         });
     }
 
+    /**
+     * Обработчик нажатия на иконку "лайк"
+     */
+    _handleLikePress = () => {
+        const { id, onLikePress } = this.props;
+
+        onLikePress(id);
+    };
+
+    /**
+     * Обработчик нажатия на иконку "удаление"
+     */
+    _handleDeletePress = () => {
+        const { id, onDeletePress } = this.props;
+
+        onDeletePress(id);
+    };
+
+    /**
+     * Сохранение изменений в тексте таски
+     */
+    _handleSavePress = () => {
+        const { id, onSavePress, text } = this.props;
+        const { newText } = this.state;
+
+        onSavePress(id, newText ? newText : text);
+        this.setState({
+            isEditMode: false
+        });
+    }
+
+    /**
+     * Обработчик нажатия на клавишу "Enter"
+     */
+    _handleEnterPress = (event) => {
+        const enterKey = event.key === 'Enter';
+
+        if (enterKey) {
+            event.preventDefault();
+            this._handleSavePress();
+        }
+    }
+
+    /**
+     * Возвращает область редактирования таски
+     */
     _renderEditMode = () => (
         <div className = { Styles.inputWrapper } >
             <input

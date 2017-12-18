@@ -13,3 +13,39 @@ export const getUniqueID = (length = 15) => {
 
     return text;
 };
+
+export const SORT = [
+    {
+        name: 'none',
+        icon: 'fa fa-sort',
+        func: () => 0
+    },
+    {
+        name: 'asc',
+        icon: 'fa fa-chevron-down',
+        func: (a, b) => {
+            if (a.text < b.text) {
+                return -1;
+            }
+            if (a.text > b.text) {
+                return 1;
+            }
+
+            return 0;
+        }
+    },
+    {
+        name: 'desc',
+        icon: 'fa fa-chevron-up',
+        func: (a, b) => {
+            if (a.text > b.text) {
+                return -1;
+            }
+            if (a.text < b.text) {
+                return 1;
+            }
+
+            return 0;
+        }
+    }
+];

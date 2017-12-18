@@ -1,4 +1,7 @@
-import { getUniqueID } from './';
+import { getUniqueID, SORT } from './';
+
+const a = { text: '1' };
+const b = { text: '2' };
 
 describe('helpers: ', () => {
     test('getUniqueID function should be a function', () => {
@@ -6,12 +9,15 @@ describe('helpers: ', () => {
     });
 
     test('getUniqueID function should throw an error if wrong non-number arguments were passed', () => {
-        function getUniqueIDWithError () {
-            getUniqueID(null, 1);
+        function checkGetUniqueID () {
+            getUniqueID(null, null);
         }
-
-        expect(getUniqueIDWithError).toThrowError(`The function argument should be a number!`);
+        expect(checkGetUniqueID).toThrowError(`The function argument should be a number!`);
     });
+
+    test('getUniqueID should return a string', () => {
+        expect(typeof getUniqueID()).toBe('string');
+    });    
 
     test(`getUniqueID function should return a string from 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'`, () => {
         function checkGetUniqueID () {
@@ -42,6 +48,34 @@ describe('helpers: ', () => {
         }
 
         expect(checkGetUniqueID).toBeTruthy();
+    });
+
+    test(`SORT length = 3 `, () => {
+        expect(SORT.length).toEqual(3);
+    });
+
+    test(`SORT func "none" always return 0`, () => {
+        const sort = SORT.find((item) => item.name === 'none')
+
+        expect(sort.func(a, a)).toEqual(0);
+        expect(sort.func(a, b)).toEqual(0);
+        expect(sort.func(b, a)).toEqual(0);
+    });
+
+    test(`SORT func "asc"`, () => {
+        const sort = SORT.find((item) => item.name === 'asc')
+        
+        expect(sort.func(a, a)).toEqual(0);
+        expect(sort.func(a, b)).toEqual(-1);
+        expect(sort.func(b, a)).toEqual(1);
+    });
+
+    test(`SORT func "desc"`, () => {
+        const sort = SORT.find((item) => item.name === 'desc')
+        
+        expect(sort.func(a, a)).toEqual(0);
+        expect(sort.func(a, b)).toEqual(1);
+        expect(sort.func(b, a)).toEqual(-1);
     });
 
 });

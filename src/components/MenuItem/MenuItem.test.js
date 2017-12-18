@@ -31,4 +31,10 @@ describe('MenuItem component', () => {
     test(`should have valid initial props`, () => {
         expect(result.props()).toEqual(props);
     });
+
+    test(`_handleMenuItemPress function should call props.onMenuItemPress function`, () => {
+        result.instance()._handleMenuItemPress();
+        expect(result.props().onMenuItemPress.mock.calls).toHaveLength(1);
+    });
+
 });
