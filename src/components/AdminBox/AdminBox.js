@@ -59,12 +59,11 @@ const menu = [
 ];
 
 const AdminBox = ({ children, location }) => {
-
     let path = location && location.pathname
         ? location.pathname.replace('/', '')
-        : 'Dashboard';
+        : '';
 
-    path = path[0].toUpperCase() + path.slice(1);
+    path = path ? path[0].toUpperCase() + path.slice(1) : 'Dashboard';
 
     return (
         <div>

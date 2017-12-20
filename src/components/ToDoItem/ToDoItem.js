@@ -12,9 +12,6 @@ class ToDoItem extends Component {
         newText:    this.props.text
     }
 
-    /**
-     * Включает режим редактирования
-     */
     _handleEditPress = () => {
         const { text } = this.props;
 
@@ -32,9 +29,6 @@ class ToDoItem extends Component {
         });
     };
 
-    /**
-     * Помечает таску галочкой
-     */
     _handleSelectPress = () => {
         const { isEditMode } = this.state;
         const { id, onSelectPress } = this.props;
@@ -46,36 +40,24 @@ class ToDoItem extends Component {
         onSelectPress(id);
     };
 
-    /**
-     * Обработчик изменений в поле ввода
-     */
     _handleInputChange = (event) => {
         this.setState({
             newText: event.target.value
         });
     }
 
-    /**
-     * Обработчик нажатия на иконку "лайк"
-     */
     _handleLikePress = () => {
         const { id, onLikePress } = this.props;
 
         onLikePress(id);
     };
 
-    /**
-     * Обработчик нажатия на иконку "удаление"
-     */
     _handleDeletePress = () => {
         const { id, onDeletePress } = this.props;
 
         onDeletePress(id);
     };
 
-    /**
-     * Сохранение изменений в тексте таски
-     */
     _handleSavePress = () => {
         const { id, onSavePress, text } = this.props;
         const { newText } = this.state;
@@ -86,9 +68,6 @@ class ToDoItem extends Component {
         });
     }
 
-    /**
-     * Обработчик нажатия на клавишу "Enter"
-     */
     _handleEnterPress = (event) => {
         const enterKey = event.key === 'Enter';
 
@@ -98,9 +77,6 @@ class ToDoItem extends Component {
         }
     }
 
-    /**
-     * Возвращает область редактирования таски
-     */
     _renderEditMode = () => (
         <div className = { Styles.inputWrapper } >
             <input
