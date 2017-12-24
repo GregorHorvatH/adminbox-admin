@@ -9,17 +9,15 @@ import Dashboard from '../../components/Dashboard';
 import Page404 from '../../components/Page404';
 
 const App = () => (
-    <section className = 'app'>
-        <Catcher>
-            <Router history = { hashHistory }>
-                <Route component = { AdminBox } path = '/'>
-                    <IndexRoute component = { Dashboard } />
-                    <Route component = { Dashboard } path = '/dashboard' />
-                    <Route component = { Page404 } path = '*' />
-                </Route>
-            </Router>
-        </Catcher>
-    </section>
+    <Catcher>
+        <Router history = { hashHistory }>
+            <Route component = { AdminBox } path = '/'>
+                <IndexRoute component = { Dashboard } />
+                <Route component = { Dashboard } path = '/dashboard' />
+                <Route component = { Page404 } path = '*' />
+            </Route>
+        </Router>
+    </Catcher>
 );
 
 export default App;
